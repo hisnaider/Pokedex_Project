@@ -10,6 +10,6 @@
 
 1 - Faça um clone desse repositório
 
-2 - Rode o seguinte comando "flutter pub get" no terminal pra instalar todas dependencias
+2 - Dentro da pasta raiz do projeto, rode o comando "flutter pub get" no terminal pra instalar todas dependencias
 
 3 - Execute o aplicativo (F5 no VSCode) e espere ele ser criado no dispostivo virtual ou fisico
