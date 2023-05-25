@@ -42,8 +42,8 @@ class _HomePageState extends State<HomePage> {
     bool isFinal = false;
     try {
       NetworkHandler networkHandler = NetworkHandler(path: "/api/v2/pokemon");
-      var result = await networkHandler
-          .getRequest(params: {"offset": "1270", "limit": "18"});
+      var result = await networkHandler.getRequest(
+          params: {"offset": _listOfPokemons.length.toString(), "limit": "18"});
       if (result["next"] == null) {
         isFinal = true;
       }
