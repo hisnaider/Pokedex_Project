@@ -1,8 +1,8 @@
 # Pokedex Maneira!
 <span align="center">
   <div style="display: flex; flex-direction: row; justify-content: space=between;">
-    <img src="https://github.com/hisnaider/Pokedex_Project/assets/13882534/38ed5e68-e442-4752-a081-ff1663d073f0" width=250px>
-    <img src="https://github.com/hisnaider/Pokedex_Project/assets/13882534/81fdcc5a-e0db-46eb-87fa-2c1473aa63e6" width=250px>
+    <img src="https://github.com/hisnaider/Pokedex_Project/assets/13882534/c4d78b94-a1a8-4a56-ba5b-41d42ec07364" width=250px>
+    <img src="https://github.com/hisnaider/Pokedex_Project/assets/13882534/9e287c7c-e7b2-4590-8b93-d6f43995b717" width=250px>
   </div>
 </span>
 
