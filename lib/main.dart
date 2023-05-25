@@ -18,11 +18,10 @@ class MyApp extends StatelessWidget {
           surfaceTintColor: Colors.white,
           backgroundColor: Colors.white,
           shadowColor: Colors.black38,
-          elevation: 5,
-          centerTitle: true,
+          elevation: 0,
           titleTextStyle: TextStyle(
             fontWeight: FontWeight.w700,
-            color: Colors.black,
+            color: Color.fromRGBO(0, 0, 0, 0.75),
             fontSize: 24,
           ),
         ),
@@ -37,38 +36,47 @@ class MyApp extends StatelessWidget {
             background: Colors.white),
         useMaterial3: true,
         textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w800,
-            fontSize: 32,
-          ),
-          headlineSmall: TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.w800,
-            fontSize: 24,
-            height: 1,
-          ),
-          titleMedium: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w800,
-            color: Colors.black,
-          ),
-          bodySmall: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: Colors.black,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.grey,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-            color: Colors.grey,
-          ),
-        ),
+            headlineLarge: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+              fontSize: 32,
+            ),
+            headlineSmall: TextStyle(
+              color: Colors.grey,
+              fontWeight: FontWeight.w800,
+              fontSize: 24,
+              height: 1,
+            ),
+            titleLarge: TextStyle(
+              fontSize: 24,
+              color: Colors.grey,
+              fontWeight: FontWeight.w700,
+            ),
+            titleMedium: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              color: Colors.black,
+            ),
+            bodySmall: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: Colors.grey,
+            ),
+            bodyMedium: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Colors.grey,
+            ),
+            bodyLarge: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: Colors.grey,
+            ),
+            labelSmall: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w800,
+              color: Colors.black,
+            )),
       ),
       home: const HomePage(),
     );

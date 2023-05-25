@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
   final List<Map<String, dynamic>> _listOfPokemons = [];
+  late bool _isFinal = false;
   String _error = "";
   bool _fetchingPokemon = false;
 
@@ -25,7 +26,8 @@ class _HomePageState extends State<HomePage> {
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >=
               _scrollController.position.maxScrollExtent - 50 &&
-          !_fetchingPokemon) {
+          !_fetchingPokemon &&
+          !_isFinal) {
         setState(() {
           _fetchingPokemon = true;
         });
@@ -37,14 +39,16 @@ class _HomePageState extends State<HomePage> {
 
   void _setListOfPokemons() async {
     List<Map<String, dynamic>> data = [];
+    bool isFinal = false;
     try {
       NetworkHandler networkHandler = NetworkHandler(path: "/api/v2/pokemon");
-      var result = await networkHandler.getRequest(
-          params: {"offset": _listOfPokemons.length.toString(), "limit": "18"});
+      var result = await networkHandler
+          .getRequest(params: {"offset": "1270", "limit": "18"});
+      if (result["next"] == null) {
+        isFinal = true;
+      }
       var names =
           result["results"].map((map) => map["name"] as String).toList();
-
-      //Pegar informações do pokemons pelos nomes
       data = await Util.getPokemonsByName(names);
     } catch (e) {
       setState(() {
@@ -55,6 +59,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _listOfPokemons.addAll(data);
         _fetchingPokemon = false;
+        _isFinal = isFinal;
       });
     }
   }
@@ -62,7 +67,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Pokedex!")),
+      appBar: AppBar(
+          title: Row(
+        children: [
+          Image.asset(
+            "images/logo.png",
+            height: 25,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          const Text("Pokedex Maneira!"),
+        ],
+      )),
       body: ProgressHud(
         loading: _listOfPokemons.isEmpty && _error.isEmpty,
         color: Theme.of(context).colorScheme.primary,
@@ -100,17 +117,32 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 150,
-                        child: Center(
-                            child: SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 5,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                        )),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: !_isFinal
+                            ? SizedBox(
+                                height: 130,
+                                child: Center(
+                                  child: SizedBox(
+                                    height: 50,
+                                    width: 50,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 5,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                ))
+                            : SizedBox(
+                                height: 100,
+                                child: Center(
+                                  child: Text(
+                                    "Você chegou ao fim :D",
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
+                                  ),
+                                ),
+                              ),
                       ),
                     )
                   ],

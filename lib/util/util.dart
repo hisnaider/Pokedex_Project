@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:pokemon_project/services/network_handler.dart';
 
 class Util {
@@ -6,7 +7,7 @@ class Util {
   }
 
   static String habitatImage(String? habitat) {
-    if (habitat != null) return "images/habitats/$habitat.png";
+    if (habitat != "Sem habitat") return "images/habitats/$habitat.png";
     return "images/unknown.png";
   }
 
@@ -33,5 +34,9 @@ class Util {
     }
 
     return data;
+  }
+
+  static String colorToHex(Color color) {
+    return '#${color.value.toRadixString(16).substring(2, 8)}';
   }
 }

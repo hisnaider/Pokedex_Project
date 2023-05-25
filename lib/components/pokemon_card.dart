@@ -56,14 +56,18 @@ class PokemonCard extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.only(top: 36, bottom: 12),
                                 child: Image.asset(
-                                  "images/pokedex.png",
+                                  "images/pokeball.png",
                                 ),
                               ),
                             ),
                           )
-                        : Image.asset(
-                            "images/unknown.png",
-                            fit: BoxFit.fitHeight,
+                        : Padding(
+                            padding: const EdgeInsets.only(top: 36, bottom: 12),
+                            child: Image.asset(
+                              "images/unknown.png",
+                              height: 50,
+                              color: Colors.grey,
+                            ),
                           ),
                   )
                 ],
